@@ -1,0 +1,19 @@
+name: My First Workflow
+
+on: push
+
+jobs:
+  basic-detail:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Welcome Message
+          run: echo "hello World"
+        
+        - name: List Directory
+          run: ls
+        
+        - name: Readme.md
+          run: cat README.md
+          
+
+    
