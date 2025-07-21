@@ -14,7 +14,13 @@ jobs:
         
         - name: createFile
           run: cowsay -f dragon "Run for cover, I feel a sneeze coming on." >> dragon.txt
-        
+
+        - name: uploadFile
+          uses: actions/upload-artifact@v4
+          with:
+            name: dragonfile
+            path: *.txt
+    
         # - name: Execute Script
         #   run : |
         #     chmod +x shellscript.sh
@@ -26,6 +32,12 @@ jobs:
     steps:
         # - name: Checkout Repo
         #   uses: actions/checkout@v4
+
+        - name: downloadFile
+          uses: actions/download-artifact@v4
+          with:
+            name: dragonfile
+
         - name: Test file
           run: grep -i "dragon" dragon.txt
         
@@ -36,6 +48,13 @@ jobs:
     steps:
         # - name: Checkout Repo
         #   uses: actions/checkout@v4
+        - name: downloadFile
+          uses: actions/download-artifact@v4
+          with:
+            name: dragonfile
+        
+        - run: ls -ltra
+
         - name: Deploy
           run: |
             cat dragon.txt
