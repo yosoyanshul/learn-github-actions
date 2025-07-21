@@ -14,6 +14,8 @@ jobs:
         
         - name: Readme.md
           run: cat README.md
-          
+        
+        - name: Hello
+          run: echo "hello again!"
 
     
