@@ -9,22 +9,8 @@ jobs:
         - name: Checkout Repo
           uses: actions/checkout@v4
         
-        - name: List Directory
-          run: |
-            echo "hello World!"
-            ls -ltra
-            cat README.md
-
-        - name: Install cowsay
-          run: sudo apt-get install cowsay -y
-        
-        - name: print dragon
-          run : cowsay -f dragon "Run for cover, I feel a sneeze coming on."
-        
-        # - name: Readme.md
-        #   run: cat README.md
-        
-        # - name: Hello Message
-        #   run: echo "hello World!"
-
+        - name: Execute Script
+          run : |
+            chmod +x shellscript.sh
+            ./shellscript.sh
     
