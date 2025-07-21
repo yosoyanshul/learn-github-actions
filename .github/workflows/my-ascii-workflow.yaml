@@ -3,14 +3,42 @@ name: My Ascii Workflow
 on: push
 
 jobs:
-  basic-detail:
+  build-phase:
     runs-on: ubuntu-latest
     steps:
-        - name: Checkout Repo
-          uses: actions/checkout@v4
+        # - name: Checkout Repo
+        #   uses: actions/checkout@v4
         
-        - name: Execute Script
-          run : |
-            chmod +x shellscript.sh
-            ./shellscript.sh
-    
+        - name: Install cowsay
+          run: sudo apt-get install cowsay -y
+        
+        - name: createFile
+          run: cowsay -f dragon "Run for cover, I feel a sneeze coming on." >> dragon.txt
+        
+        # - name: Execute Script
+        #   run : |
+        #     chmod +x shellscript.sh
+        #     ./shellscript.sh
+
+  test-phase:
+    needs: [build-phase]
+    runs-on: ubuntu-latest
+    steps:
+        # - name: Checkout Repo
+        #   uses: actions/checkout@v4
+        - name: Test file
+          run: grep -i "dragon" dragon.txt
+        
+        
+  deploy-phase:
+    needs: [build-phase,test-phase]
+    runs-on: ubuntu-latest
+    steps:
+        # - name: Checkout Repo
+        #   uses: actions/checkout@v4
+        - name: Deploy
+          run: |
+            cat dragon.txt
+            ls -ltra
+        
+       
