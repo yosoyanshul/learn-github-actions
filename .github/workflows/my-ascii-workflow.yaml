@@ -14,9 +14,6 @@ jobs:
             echo "hello World!"
             ls -ltra
             cat README.md
-
-        # - name: Install cowsay
-        #   run: sudo apt-get install cowsay -y
         
         - name: print dragon
           run : cowsay -f dragon "Run for cover, I feel a sneeze coming on."
