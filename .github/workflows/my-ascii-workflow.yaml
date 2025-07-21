@@ -2,12 +2,16 @@ name: My Ascii Workflow
 
 on: push
 
+env:
+  NAME: "ANSHUL"
+  AGE: "16"
+
 jobs:
   build-phase:
     runs-on: ubuntu-latest
     steps:
-        # - name: Checkout Repo
-        #   uses: actions/checkout@v4
+        - name: Checkout Repo
+          uses: actions/checkout@v4
         
         - name: Install cowsay
           run: sudo apt-get install cowsay -y
@@ -20,7 +24,10 @@ jobs:
           with:
             name: dragonfile
             path: dragon.txt
-    
+            
+        - name: printenv
+          run: |
+            echo hello $NAME $AGE
         # - name: Execute Script
         #   run : |
         #     chmod +x shellscript.sh
